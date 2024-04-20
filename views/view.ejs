@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+        <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+     <div class="container w-50 mx-auto">
+        <h1 class="text-center">Result</h1>
+        <span class="text-success  mx-2" style="font-size: 35px;">Your Score:<%= result.i %>/10</span>
+        <div class="">
+            <div class="d-flex mb-2 justify-content-between">
+                <div class="">
+                <% if(result.i<=3 )
+                {%>
+                 <span style="font-size:20px;" class=" text-success p-2">
+                     Poor,Need to Improve
+                 </span>
+               <%} else if(result.i==4||result.i==5){%>
+                 <span style="font-size:20px" class="text-success p-2">Fair</span>
+               <%} else if(result.i==5||result.i==6){%>
+                 <span style="font-size:20px" class="text-success p-2">Good</span>
+               <%}
+                  else if(result.i>=7||result.i<=9){%>
+                 <span style="font-size:20px" class="text-success p-2">Very Good</span>
+               <%}  
+                else
+                {%>
+                 <span style="font-size:20px" class="text-success p-2">Excellent</span>
+               <% }%>
+            </div>
+             <div class="">
+                <span class="p-1  text-white bg-success">Correct</span>
+                <span class="p-1  text-white bg-danger">Incorrect</span>
+                <span class="p-1  text-white bg-warning">Not attempted</span>
+            </div>
+        </div>
+        
+       
+       
+      
+        <div  class="card p-4">
+           <form action="/" method="post"> 
+           
+             <!-- First Question -->
+             <div class="mb-4">
+                <p class="h5">What is the await keyword used for in async functions?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                        
+                       
+                       <% if(data.first == "A") {%> <i style="margin-left:-25px"  class=" bg-success p-1 text-white padding-left:-25px fa-solid fa-check"></i>  <% }%> <% if(result.first!=="A" || data.first =="A" && result.first =="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>
+                        <label class="form-check-label" for="answerA">
+                            A: To pause the execution of the async function until a Promise settles
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.first == "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.first!=="B" || data.first =="B" && result.first =="B" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  B: To automatically catch errors
+                        </label>
+
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerC">
+                            <% if(data.first == "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.first!=="C" || data.first =="C" && result.first =="C" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%> C: To create a new Promise
+                        </label>
+                    </div>
+                    <div class="form-check">
+                       
+                        <label class="form-check-label" for="answerD">
+                            <% if(data.first == "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.first!=="D" || data.first =="D" && result.first =="D" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%> D: To repeat an asynchronous operation
+                        </label>
+                    </div>
+                </div>
+               
+               <% if(data.first && result.first=="A")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+              <%} else if(result.first==undefined){%>
+                <h6 class="bg-warning p-2">Not attempted</h6>
+              <%}
+               else
+               {%>
+                <h6 class="bg-danger p-2">Incorrect</h6>
+              <% }%>
+            </div>
+            <hr>
+            <!-- Second question -->
+            <div class="mb-4">
+                <p class="h5"> How do you create a new Promise in JavaScript?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerA">
+                            <% if(data.second == "A") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.second!=="A" || data.second =="A" && result.second =="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>         A:  new Promise(function(resolve, reject) {…})
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.second == "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%>  <% if(result.second!=="B" || data.second =="A" && result.second =="A") {%>   <% } else {%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>   <%}%>    B:  Promise.create(function(resolve, reject) {…})
+                        </label>
+                    </div>
+                    <div class="form-check">
+                       
+                        <label class="form-check-label" for="answerC">
+                            <% if(data.second == "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.second!=="C"|| data.second =="A" && result.second =="A") {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>   <%}%> C:  new AsyncPromise(function(resolve, reject) {…})
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerD">
+                            <% if(data.second == "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.second!=="D"|| data.second =="A" && result.second =="A") {%>   <% }else{%>  <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  D: Promise.new(function(resolve, reject) {…})
+                        </label>
+                    </div>
+                </div>
+                <% if(data.second && result.second=="A")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+                <%} else if(result.second==undefined){%>
+                    <h6 class="bg-warning p-2">Not attempted</h6>
+                  <%}
+                   else
+                   {%>
+                    <h6 class="bg-danger p-2">Incorrect</h6>
+                  <% }%>
+            </div>
+            
+            <hr>
+            <!-- Thrid Question -->
+            <div class="mb-4">
+                <p class="h5">How can you convert a callback-based function to return a Promise?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerA">
+                            <% if(data.third== "A") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.third!=="A" || data.third=="A" && result.third=="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  A: By changing the function to an arrow function
+                        </label>
+                    </div>
+                    <div class="form-check">
+                      
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.third== "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.third!=="B" || data.third=="B" && result.third=="B" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  B:  By wrapping the function with async
+                        </label>
+                    </div>
+                    <div class="form-check">
+                       
+                        <% if(data.third== "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.third!=="C" || data.third=="C" && result.third=="C" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%><label class="form-check-label" for="answerC">
+                          C:  Using Promise.resolve()
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerD">
+                         
+                            <% if(data.third== "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.third!=="D" || data.third=="D" && result.third=="D" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>    D: Using the Promise constructor 
+                        </label>
+                    </div>
+                </div>
+                <% if(data.third && result.third=="D")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+                <%} else if(result.third==undefined){%>
+                    <h6 class="bg-warning p-2">Not attempted</h6>
+                  <%}
+                   else
+                   {%>
+                    <h6 class="bg-danger p-2">Incorrect</h6>
+                  <% }%>
+            </div>
+           
+            <hr>
+            <!-- Fourth Question -->
+            
+            <div class="mb-4">
+                <p class="h5"> What is Node.js?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerA">
+                            <% if(data.fourthh == "A") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.fourthh!=="A" || data.fourthh =="A" && result.fourthh =="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  A: A front-end framework
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.fourthh == "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.fourthh!=="B" || data.fourthh =="A" && result.fourthh =="B" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   B:  A back-end framework
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerC">
+                            <% if(data.fourthh == "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.fourthh!=="C" || data.fourthh =="C" && result.fourthh =="C" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%> C:  A JavaScript runtime built on Chrome’s V8 JavaScript engine
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerD">
+
+                            <% if(data.fourthh == "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.fourthh!=="D" || data.fourthh =="D" && result.fourthh =="D" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   D: A type of database
+                        </label>
+                    </div>
+                </div>
+                <% if(data.fourthh && result.fourthh=="C")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+                <%} else if(result.fourthh==undefined){%>
+                    <h6 class="bg-warning p-2">Not attempted</h6>
+                  <%}
+                   else
+                   {%>
+                    <h6 class="bg-danger p-2">Incorrect</h6>
+                  <% }%>
+            </div>
+            <hr>
+            <!-- fifth question -->
+            <div class="mb-4">
+                <p class="h5">Which core module in Node.js provides asynchronous file operations?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerA">
+                            <% if(data.fifth== "A") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.fifth!=="A" || data.fifth=="A" && result.fifth=="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   A: http
+                        </label>
+                    </div>
+                    <div class="form-check">
+                       
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.fifth== "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.fifth!=="B" || data.fifth=="B" && result.fifth=="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   B:   url
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerC">
+                            <% if(data.fifth== "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.fifth!=="C" || data.fifth=="C" && result.fifth=="C" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  C:  fs
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerD">
+
+                            <% if(data.fifth== "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.fifth!=="D" || data.fifth=="D" && result.fifth=="D" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>    D: path
+                        </label>
+                    </div>
+                </div>
+                <% if(data.fifth && result.fifth=="C")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+                <%} else if(result.fifth==undefined){%>
+                    <h6 class="bg-warning p-2">Not attempted</h6>
+                  <%}
+                   else
+                   {%>
+                    <h6 class="bg-danger p-2">Incorrect</h6>
+                  <% }%>
+            </div>
+            <hr>
+            <!-- sixth -->
+            <div class="mb-4">
+                <p class="h5">Which global object provides functionality to control the Node.js runtime process?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerA">
+                            <% if(data.sixth == "A") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.sixth!=="A" || data.sixth =="A" && result.sixth =="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   A: Process
+                        </label>
+                    </div>
+                    <div class="form-check">
+                       
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.sixth == "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.sixth!=="B" || data.sixth =="B" && result.sixth =="B" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  B:   Runtime
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerC">
+                            <% if(data.sixth == "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.sixth!=="C" || data.sixth =="C" && result.sixth =="C" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%> C:Global
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerD">
+
+                            <% if(data.sixth == "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.sixth!=="D" || data.sixth =="D" && result.sixth =="D" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>    D: NodeControl
+                        </label>
+                    </div>
+                </div>
+                <% if(data.sixth && result.sixth=="A")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+                <%} else if(result.sixth==undefined){%>
+                    <h6 class="bg-warning p-2">Not attempted</h6>
+                  <%}
+                   else
+                   {%>
+                    <h6 class="bg-danger p-2">Incorrect</h6>
+                  <% }%>
+            </div>
+            <hr>
+            <!-- seventh -->
+            <div class="mb-4">
+                <p class="h5">Which Node.js method is used to delay the execution of a function?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                       
+                        <label class="form-check-label" for="answerA">
+                            <% if(data.seventh == "A") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.seventh!=="A" || data.seventh =="A" && result.seventh =="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   A: process.delay()
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.seventh == "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.seventh!=="B" || data.seventh =="B" && result.seventh =="B" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   B:   setTimeout()
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerC">
+                            <% if(data.seventh == "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.seventh!=="C" || data.seventh =="C" && result.seventh =="C" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%> C: wait()
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerD">
+
+                            <% if(data.seventh == "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.seventh!=="D" || data.seventh =="D" && result.seventh =="D" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>    D: sleep()
+                        </label>
+                    </div>
+                </div>
+                <% if(data.seventh && result.seventh=="B")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+                <%} else if(result.seventh==undefined){%>
+                    <h6 class="bg-warning p-2">Not attempted</h6>
+                  <%}
+                   else
+                   {%>
+                    <h6 class="bg-danger p-2">Incorrect</h6>
+                  <% }%>
+            </div>
+            <hr>
+            <!-- eight-->
+            <div class="mb-4">
+                <p class="h5">What is the Node.js event loop?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerA">
+                            <% if(data.e == "A") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.e!=="A" || data.e =="A" && result.e =="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   A: A loop that emits custom events
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.e == "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.e!=="B" || data.e =="B" && result.e =="B" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  B:   A loop that continuously checks for events and processes them
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerC">
+                            <% if(data.e == "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.e!=="C" || data.e =="C" && result.e =="C" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%> C: A mechanism to define custom events
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerD">
+
+                            <% if(data.e == "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.e!=="D" || data.e =="D" && result.e =="D" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   D: The main process of a Node.js application
+                        </label>
+                    </div>
+                </div>
+                <% if(data.e && result.e=="B")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+                <%} else if(result.e==undefined){%>
+                    <h6 class="bg-warning p-2">Not attempted</h6>
+                  <%}
+                   else
+                   {%>
+                    <h6 class="bg-danger p-2">Incorrect</h6>
+                  <% }%>
+            </div>
+            <hr>
+            <!-- ninth -->
+            <div class="mb-4">
+                <p class="h5"> Which of the following allows Node.js to be scalable?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                       
+                        <label class="form-check-label" for="answerA">
+                            <% if(data.ninth == "A") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.ninth!=="A" || data.ninth =="A" && result.ninth =="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>    A: Multithreading
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.ninth == "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.ninth!=="B" || data.ninth =="B" && result.ninth =="B" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   B:  High CPU usage
+                        </label>
+                    </div>
+                    <div class="form-check">
+                    
+                        <label class="form-check-label" for="answerC">
+                            <% if(data.ninth == "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.ninth!=="C" || data.ninth =="C" && result.ninth =="C" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%> C: Larger memory allocation
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerD">
+
+                            <% if(data.ninth == "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.ninth!=="D" || data.ninth =="D" && result.ninth =="D" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%> D:Event-driven architecture 
+                        </label>
+                    </div>
+                </div>
+                <% if(data.ninth && result.ninth=="D")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+                <%} else if(result.ninth==undefined){%>
+                    <h6 class="bg-warning p-2">Not attempted</h6>
+                  <%}
+                   else
+                   {%>
+                    <h6 class="bg-danger p-2">Incorrect</h6>
+                  <% }%>
+            </div>
+            <hr>
+            <!-- tenth -->
+            <div class="mb-4">
+                <p class="h5">In which object are all the environment variables stored in a Node.js application?</p>
+                <div  class="mb-3">
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerA">
+                            <% if(data.tenth == "A") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.tenth!=="A" || data.tenth =="A" && result.tenth =="A" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  A:env
+                        </label>
+                    </div>
+                    <div class="form-check">
+                       
+                        <label class="form-check-label" for="answerB">
+                            <% if(data.tenth == "B") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.tenth!=="B" || data.tenth =="B" && result.tenth =="B" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   B:  process.env
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerC">
+                            <% if(data.tenth == "C") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.tenth!=="C" || data.tenth =="C" && result.tenth =="C" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>  C: node.env
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        
+                        <label class="form-check-label" for="answerD">
+
+                            <% if(data.tenth == "D") {%> <i style="margin-left:-25px" class="bg-success p-1 text-white fa-solid fa-check"></i>  <% }%> <% if(result.tenth!=="D" || data.tenth =="D" && result.tenth =="D" ) {%>   <% }else{%> <i style="margin-left:-25px" class="fa-solid fa-xmark bg-danger p-1"></i>  <%}%>   D:app.env
+                        </label>
+                    </div>
+                </div>
+                <% if(data.tenth && result.tenth=="B")
+               {%>
+                <h6 class="bg-success p-2">
+                    Correct
+                </h6>
+                <%} else if(result.tenth==undefined){%>
+                    <h6 class="bg-warning p-2">Not attempted</h6>
+                  <%}
+                   else
+                   {%>
+                    <h6 class="bg-danger p-2">Incorrect</h6>
+                  <% }%>
+            </div>
+            <hr>
+            <button class="btn btn-primary" type="submit">Back</button>
+           </form>
+           
+        </div>
+     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
